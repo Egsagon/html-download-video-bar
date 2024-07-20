@@ -1,0 +1,130 @@
+:root {
+    --primary: orange;
+    --secondary: orangered;
+    --terciary: #c43400;
+    --text-color: white;
+    --error-color: #d30707;
+    --size: 48px;
+}
+
+body {
+    background-color: #23272e;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video {
+    background-color: #fff;
+    width: 450px;
+    height: 300px;
+    border-radius: 8px;
+
+    background: repeating-linear-gradient(
+        45deg,
+        #fff,
+        #fff 10px,
+        #f7f7f7 10px,
+        #f7f7f7 20px
+    );
+}
+
+.wrapper {
+    position: absolute;
+    width: 450px;
+    height: 300px;
+}
+
+.wrapper::before {
+    content: 'VIDEO';
+    position: absolute;
+    font-family: 'Segoe UI';
+    color: #ececec;
+    font-size: 90px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+}
+
+.btn {
+    margin: 16px;
+    background-color: var(--primary);
+    position: absolute;
+    right: 0;
+    border-radius: calc(var(--size) / 2);
+    width: var(--size);
+    height: var(--size);
+    cursor: pointer;
+    transition: all ease-in-out .2s;
+    overflow-x: hidden;
+}
+
+.btn.deployed {
+    width: calc(100% - 32px);
+}
+
+.btn.error {
+    background-color: var(--error-color);
+}
+
+.btn .bar {
+    width: 0%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--secondary);
+    transition: all ease-in-out .3s;
+
+    background: repeating-linear-gradient(
+        45deg,
+        var(--terciary),
+        var(--terciary) 10px,
+        var(--secondary) 10px,
+        var(--secondary) 20px
+    );
+}
+
+.btn p {
+    all: unset;
+    user-select: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--text-color);
+    font-family: 'Segoe UI', 'FontAwesome';
+    letter-spacing: 2px;
+}
+
+.btn:hover {
+    filter: brightness(110%);
+}
+
+#settings {
+    width: 60px;
+    height: 300px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#settings button {
+    width: 60px;
+    height: 60px;
+    border: none;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#settings button:last-child {
+    margin-bottom: 0;
+}

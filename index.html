@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+
+    <div id="settings">
+        <button onclick="set(progress + 10)">+</button>
+        <button onclick="set(progress - 10)">-</button>
+        <button onclick="reset()">Reset</button>
+        <button onclick="raise('Error')">Raise</button>
+    </div>
+
+    <div class="video">
+        <div class="wrapper">
+            <div class="btn">
+                <div class="bar"></div>
+                <p></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const btn = document.querySelector('.btn')
+        const btnp = document.querySelector('.btn p')
+        const btnb = document.querySelector('.btn .bar')
+
+        var progress = 0
+
+        const set = value => {
+            if (value > 100) value = 100
+            if (value < 0) value = 0
+
+            progress = value
+            btn.classList.add('deployed')
+            btn.classList.remove('error')
+            btnp.innerHTML = value + '%'
+            btnb.style.width = value + '%'
+        }
+
+        const reset = () => {
+            set(0)
+            btnp.innerHTML = ''
+            btn.classList.remove('deployed')
+            btn.classList.remove('error')
+        }
+
+        const raise = (text) => {
+            set(0)
+            btnp.innerHTML = text
+            btn.classList.add('error')
+        }
+
+        btn.addEventListener('click', () => set(0))
+    </script>
+</body>
+</html>
